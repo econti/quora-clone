@@ -1,0 +1,46 @@
+body {
+  background-color: #F1F2F4;
+}
+
+.logo a {
+  color: #92c35e;
+}
+
+.logo a:hover, .logo a:focus {
+  color: #92c35e;
+  text-decoration: none;
+}
+
+.signup {
+  background-color: white;
+  width: 70%;
+  border-radius: 0px;
+  margin: 10px auto 0;
+}
+
+.signup {
+  padding: 30px 20px;
+}
+
+.signup form {
+  margin-top: 20px;
+}
+
+.signup h2 {
+  margin: 0;
+}
+
+.sign_in_button {
+  color: white;
+  background-color: #b92b27 !important;
+  border-color: #b92b27;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+.sign_in_button:hover {
+  color: white;
+  opacity: .7;
+  border-color: #b92b27;
+}

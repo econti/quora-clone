@@ -1,0 +1,42 @@
+<br>
+{% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary btn-sm pull-left square-label" data-toggle="modal" data-target="#myModal">Answer</button>
+{% else %}
+    <a href="{% url 'fblogin' %}" class="btn btn-primary btn-sm pull-left square-label">Sign in to Answer</a>
+{% endif %}
+<br>
+<hr>
+<h4><span class="comment-count">{{ question.get_comments.count }}</span> Answers</h4>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="post-comment clearfix">
+                    <form role="form" id="comment-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="question" value="{{ question.pk }}">
+                        <div class="user-portrait clearfix">
+                            <img class="round-user" src="{{ user.profile.get_picture }}">
+                        </div>
+                        <div class="comment-input clearfix">
+                            <div class="pull-left">{% include 'markdown_editor.html' with textarea='comment' %}</div>
+
+                            <textarea class="form-control" rows="10" placeholder="Write an answer..." name="comment" id="comment"></textarea>
+                            <br>
+                            <button type="button" class="btn btn-primary btn-md answer pull-left square-label" data-toggle="modal" data-target="#myModal">Answer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="" id="comment-list">
+    {% for comment in question.get_comments %} {% include 'questions/partial_question_comment.html' with comment=comment %} {% empty %}
+    <div style="padding: .6em 0">Be the first one to answer!</div>
+    {% endfor %}
+</div>

@@ -1,0 +1,29 @@
+<script src="{{ STATIC_URL }}js/jquery.selection.js"></script>
+<script src="{{ STATIC_URL }}js/quora.markdown.js"></script>
+
+<div class="markdown">
+  <div class="modal fade" id="markdown_help">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Help</h4>
+        </div>
+        <div class="modal-body">
+          <p>You can learn more about markdown syntax <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">here</a>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-default btn-sm" ref="header"><span class="glyphicon glyphicon-header"></span></button>
+    <button type="button" class="btn btn-default btn-sm" ref="bold"><span class="glyphicon glyphicon-bold"></span></button>
+    <button type="button" class="btn btn-default btn-sm" ref="italic"><span class="glyphicon glyphicon-italic"></span></button>
+    <button type="button" class="btn btn-default btn-sm" ref="list"><span class="glyphicon glyphicon-list"></span></button>
+    <button type="button" class="btn btn-default btn-sm" ref="link"><span class="glyphicon glyphicon-link"></span></button>
+  </div>
+</div>
+<script>$(function(){$("#{{ textarea }}").markdown();});</script>

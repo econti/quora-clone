@@ -1,0 +1,6 @@
+<div class="list-group">
+  <a href="{% url 'search' %}?q={{ querystring }}&type=questions" class="list-group-item{% if active == 'questions' %} active{% endif %}">
+    <span>Questions</span>
+    <span class="badge">{{ count.questions }}</span>
+  </a>
+</div>

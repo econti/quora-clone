@@ -1,0 +1,174 @@
+.questions question {
+  padding-bottom: 1.4em;
+  border-bottom: 1px solid #eeeeee;
+  margin-top: 2.4em;
+}
+
+.questions question p {
+  font-size: 16px;
+}
+
+.questions question:last-child {
+  border-bottom: none;
+}
+
+.info {
+  margin-bottom: .5em;
+  color: #a0a0a0;
+}
+
+.info a {
+  color: #a0a0a0;
+}
+
+.info > span {
+  margin-right: 1em;
+}
+
+.info .user img {
+  width: 20px;
+}
+
+question .tags {
+  font-size: 1em;
+}
+
+.popular-tags h4 {
+  margin-top: 2em;
+}
+
+.popular-tags .label {
+  margin-top: .4em;
+  font-size: .8em;
+  line-height: 2;
+  background-color: #b92b27;
+  border-radius: 0px;
+}
+
+.popular-tags a:hover, .tags a:hover {
+  text-decoration: none;
+}
+
+.user-portrait img {
+  border-radius: 50%;
+  width: 34px;
+}
+
+.user-portrait {
+  width: 40px;
+  float: left;
+}
+
+.comment-input {
+  float: left;
+  width: -moz-calc(100% - 40px);
+  width: -webkit-calc(100% - 40px);
+  width: calc(100% - 40px);
+}
+
+.post-comment {
+  margin-bottom: 1em;
+}
+
+.comment-portrait {
+  width: 40px;
+  border-radius: 5px;
+  float: left;
+}
+
+.comment-text {
+  margin-left: 50px;
+}
+
+.comment-text h5 {
+  padding-top: .1em;
+  margin: .2em 0;
+}
+
+.comment-text h5 small {
+  margin-left: .6em;
+}
+
+.comment-text p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.comment {
+  border-bottom: 1px solid #e3e3e3;
+  padding: .8em 0;
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.label-default {
+  background-color: #b92b27 !important;
+}
+
+.question-link {
+  color: black;
+  font-weight:bold;
+}
+
+.answer-picture {
+  width: 30px;
+}
+
+.answer-user {
+  font-size: 18px;
+  color: black;
+}
+
+.ask-btn {
+  width: 75px;
+  border-radius: 0px;
+}
+
+.round-user {
+  border-radius:50%;
+}
+
+.center-block {
+    display: table;
+    margin: 0 auto;
+}
+
+.tight-column {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+span.voted {
+  color: #b92b27;
+}
+
+span.vote:hover {
+  color: #b92b27;
+}
+
+.square-label {
+  border-radius: 0px;
+}
+
+.square-label:hover {
+  text-decoration: none;
+}
+
+.pagination>.active>span {
+  background-color:#b92b27 !important;
+  border-color:#b92b27 !important;
+}
+
+.form-control {
+  border-radius: 0px;
+}
+
+.modal-content {
+  border-radius:0px !important;
+}
+
+.question-content {
+  font-size: 16px;
+}

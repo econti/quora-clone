@@ -1,0 +1,18 @@
+{% load humanize %}
+
+<div class="comment" comment-id="{{ comment.id }}">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-xs-1 tight-column options" style="font-size:15px;">
+            <span class="center-block glyphicon glyphicon-chevron-up vote up-vote{% if user.id in comment.get_up_voters %} voted{% endif %}"></span>
+            <div class="center-block votes">{{ comment.upvotes }}</div>
+        </div>
+        <div class="col-xs-11 tight-column">
+            <a href="{% url 'public_profile' comment.user.id %}"><img src="{{ comment.user.profile.get_picture }}" class="comment-portrait round-user"></a>
+            <div class="comment-text">
+                <h5><a href="{% url 'public_profile' comment.user.id %}">{{ comment.user.profile.get_screen_name }}</a><small>{{ comment.date|naturaltime }}</small></h5>
+                <div style="word-wrap: break-word;">{{ comment.get_comment_as_markdown|safe }}</div>
+            </div>
+        </div>
+    </div>
+</div>

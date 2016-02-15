@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ question.title }}{% endblock %}
+
+{% block head %}
+  <link href="{{ STATIC_URL }}css/questions.css" rel="stylesheet">
+  <script src="{{ STATIC_URL }}js/questions.js"></script>
+{% endblock head %}
+
+
+{% block main %}
+<div class="col-md-offset-2 col-md-8">
+  {% include 'questions/partial_question.html' with question=question %}
+  {% include 'questions/partial_question_comments.html' with question=question %}
+</div>
+{% endblock main %}
+

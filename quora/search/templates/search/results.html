@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %} Search {% endblock %}
+
+{% block head %}
+  <link href="{{ STATIC_URL }}css/search.css" rel="stylesheet">
+  <script src="{{ STATIC_URL }}js/search.js"></script>
+{% endblock head %}
+
+{% block main %}
+  <div class="page-header">
+  </div>
+  <div class="row results">
+    <div class="col-md-12">
+      <h3>Searching for: {{ querystring }}</h3>
+          {% for result in results %}
+          <h3><a class="question-link" href="{% url 'question' result.slug %}">{{ result.title }}</a></h3>
+          <span class="date">{{ result.date|naturaltime }}</span>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock main %}

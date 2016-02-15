@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <script src="{{ STATIC_URL }}js/questions.js"></script>
+{% endblock head %}
+
+{% block main %}
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+
+
+  <form action="{% url 'write' %}" method="post" role="form">
+    {% csrf_token %}
+    {{ form.status }}
+    {% for field in form.visible_fields %}
+      <div class="form-group{% if field.errors %} has-error{% endif %}">
+        {% if field.label != 'No-show' %}
+          <label for="{{ field.label }}" class="control-label">{{ field.label }}</label>
+        {% endif %}
+        {{ field }}
+        {% if field.help_text %}
+          <span class="help-block">{{ field.help_text }}</span>
+        {% endif %}
+        {% for error in field.errors %}
+          <label class="control-label">{{ error }}</label>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    <div class="form-group">
+      <button type="button" class="btn btn-primary btn-lg publish square-label">Ask Quora</button>
+    </div>
+  </form>
+    </div>
+  </div>
+{% endblock main %}

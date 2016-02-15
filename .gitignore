@@ -1,0 +1,7 @@
+env
+.env
+.idea
+*.pyc
+staticfiles
+*.DS_STORE
+*.sqlite3

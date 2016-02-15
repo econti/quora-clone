@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+  <head>
+    <title>Quora</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- css -->
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" media="screen">
+	<link href="{{ STATIC_URL }}color/default.css" rel="stylesheet" media="screen">
+	<script src="{{ STATIC_URL }}js/modernizr.custom.js"></script>
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/fav.ico" type="image/x-icon">
+    <link rel="icon" href="{{ STATIC_URL }}img/fav.ico" type="image/x-icon">
+  </head>
+  <body class="siteBody">
+  <div class="siteBody-content">
+  <section>
+	  <!-- intro area -->
+		  <div id="intro">
+
+				<div class="intro-text">
+					<div class="container">
+						<div class="row">
+						<div class="col-sm-12">
+							<div class="brand">
+								<h1 class="company_name">Quora</h1>
+								<div class="line-spacer"></div>
+								<p><span>Get answers to your questions.</span></p>
+							</div>
+						</div>
+						</div>
+						<div style="margin-top:30px;margin-bottom:60px;" class="row">
+							<div class="col-sm-12">
+								<a type="button" class="btn btn-theme btn-lg" style="font-size:25px;" href="{% url 'questions' %}">Explore</a>
+							</div>
+						</div>
+
+
+					</div>
+			 	</div>
+
+		 </div>
+	</section>
+	  <!-- About -->
+	  <section id="about" class="home-section bg-white">
+		<div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <section class=" questions">
+            {% for question in questions %}
+              {% include 'questions/partial_question.html' with question=question %}
+            {% empty %}
+              <h4 class="no-data">There is no published question yet.<a href="{% url 'write' %}">Be the first one to publish!</a></h4>
+            {% endfor %}
+          </section>
+        </div>
+      </div>
+        </div>
+	  </section>
+</div>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>Copyright &copy;2016 Quora. All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	</body>
+    {% endblock body %}
+

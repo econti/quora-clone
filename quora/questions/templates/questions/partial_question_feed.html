@@ -1,0 +1,38 @@
+{% load humanize %}
+
+<question>
+  <h3><a class="question-link" href="{% url 'question' question.slug %}">{{ question.title }}</a></h3>
+  <div class="info">
+    <span class="date">
+      {{ question.create_date|naturaltime }}
+    </span>
+    <span class="user">
+      <a href="{% url 'public_profile' question.create_user.id %}"><img class="round-user" src="{{ question.create_user.profile.get_picture }}"></a>
+      <a href="{% url 'public_profile' question.create_user.id %}">{{ question.create_user.profile.get_private_screen_name }}</a>
+    </span>
+    <span class="comments">
+      <span class="glyphicon glyphicon-comment"></span>
+      {{ question.get_num_comments }} Answers
+    </span>
+  </div>
+  <div class="content">
+    {% with comment=question.get_top_comment %}
+      <div class="info">
+        {% if comment.user.profile.get_picture %}
+          <a href="{% url 'public_profile' comment.user.id %}"><img class="answer-picture round-user" src="{{ comment.user.profile.get_picture }}"></a>
+        {% endif %}
+        {% if comment.user.id %}
+          <a href="{% url 'public_profile' comment.user.id %}" class="answer-user">{{ comment.user.profile.get_private_screen_name }}</a>
+        {% endif %}
+      </div>
+      <p> {{ comment.content|safe }} </p>
+    {% endwith %}
+  </div>
+  {% if question.get_tags %}
+    <div class="tags">
+      {% for tag in question.get_tags %}
+        <a href="{% url 'tag' tag.tag %}"><span class="label label-default square-label">{{ tag }}</span></a>
+      {% endfor %}
+    </div>
+  {% endif %}
+</question>

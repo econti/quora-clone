@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Quora{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ STATIC_URL }}img/fav.ico">
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/quora.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/questions.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="{{ STATIC_URL }}js/jquery-2.1.1.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/quora.js"></script>
+
+    {% block head %}
+    {% endblock head %}
+  </head>
+  <body>
+    {% block body %}
+      <header>
+        <!-- /.container-fluid -->
+      <div class="nav-div" style="padding-bottom:10px;">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+          <div class="container-fluid nav-space container">
+            <div class="navbar-header page-scroll">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{% url 'home' %}">Quora</a>
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+            {% if user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'settings' %}">{{ user.profile.get_non_private_screen_name }}</a></li>
+                    <li><a href="{% url 'logout' %}">Log out</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="{% url 'questions' %}">Explore</a></li>
+                </ul>
+              {% else %}
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'fblogin' %}">Login</a></li>
+              </ul>
+              {% endif %}
+              <ul class="nav navbar-nav navbar-right">
+                <li><a data-toggle="modal" data-target="#howitworks" href="#">How it works</a></li>
+              </ul>
+              {% if not hide_search %}
+                <form class="navbar-form navbar-left" role="search" action="{% url 'search' %}">
+                  <div class="input-group" style="width:350px;">
+                    <input type="text" class="form-control" name="q" placeholder="Find questions">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn btn-default">Find</span></button>
+                    </span>
+                  </div>
+                </form>
+              {% endif %}
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- how it works modal -->
+      <div id="howitworks" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+              <div class="modal-content" style="border-radius:0px;">
+                  <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>How it works</h3>
+                            <br>
+                            <div class="panel panel-default sharp-panel" style="padding:15px;">
+                              <h4><i class="fa fa-binoculars"></i> Ask questions.</h4>
+                            </div>
+                            <div class="panel panel-default sharp-panel" style="padding:15px;">
+                              <h4><i class="fa fa-link"></i> Get great answers.</h4>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- end of how it works modal -->
+
+      </header>
+      <main>
+        <div class="container">
+          {% block main %}
+          {% endblock main %}
+        </div>
+      </main>
+    {% endblock body %}
+    <script src="{{ STATIC_URL }}js/ga.js"></script>
+  </body>
+</html>

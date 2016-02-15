@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <script src="{{ STATIC_URL }}js/questions.js"></script>
+{% endblock head %}
+
+{% block main %}
+  <ol class="breadcrumb">
+    <li><a href="{% url 'questions' %}">Questions</a></li>
+    <li class="active">Drafts</li>
+  </ol>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Tags</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for question in drafts %}
+        <tr>
+          <td><a href="{% url 'edit_question' question.pk %}">{{ question.title }}</a></td>
+          <td>{{ question.get_summary_as_markdown|safe }}</td>
+          <td>
+            {% for tag in question.get_tags %}
+              <span class="label label-default square-label">{{ tag }}</span>
+            {% endfor %}
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4" style="text-align: center">
+            No draft to display
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock main %}

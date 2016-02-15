@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <link href="{{ STATIC_URL }}css/cover.css" rel="stylesheet">
+{% endblock head %}
+
+{% block body %}
+<div class="row">
+  <div class="cover col-md-10">
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          {{ error }}
+        </div>
+      {% endfor %}
+    {% endif %}
+    <div class="login">
+      <h2>Sign in</h2>
+      <form method="post" action="{% url 'login' %}" role="form">
+        {% csrf_token %}
+        <div class="form-group{% if form.username.errors %} has-error{% endif %}">
+          <label for="username">Email</label>
+          <input type="text" class="form-control" id="username" name="username">
+          {% for error in form.username.errors %}
+            <label class="control-label">{{ error }}</label>
+          {% endfor %}
+        </div>
+        <div class="form-group{% if form.password.errors %} has-error{% endif %}">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password">
+          {% for error in form.password.errors %}
+            <label class="control-label">{{ error }}</label>
+          {% endfor %}
+        </div>
+        <div class="form-group" style="padding-top:10px;">
+          <button type="submit" class="btn btn-default sign_in_button square-label">Sign in</button>
+        </div>
+        <a href="{% url 'signup' %}" class="btn btn-link">Sign up</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock body %}

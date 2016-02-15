@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} Questions {% endblock %}
+
+{% block head %}
+  <link href="{{ STATIC_URL }}css/questions.css" rel="stylesheet">
+{% endblock head %}
+
+{% block main %}
+  <div class="row">
+    <div class="col-md-2 hidden-md hidden-sm hidden-xs">
+      <h3>Top Users</h3>
+      <hr>
+      <div class="row">
+        {% for user in users %}
+          <div class="col-md-12">
+            <img class="round-user" src="{{ user.profile.get_picture }}" style="width:20px;">
+            <a href="{% url 'public_profile' user.id %}">{{ user.profile.get_private_screen_name }}</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h3>
+        Recent Questions
+        <a href="{% url 'write' %}" class="btn btn-primary pull-right ask-btn"> Ask
+        </a>
+      </h3>
+      <hr>
+      <section class=" questions">
+        {% for question in questions %}
+          {% include 'questions/partial_question_feed.html' with question=question %}
+        {% empty %}
+          <h4 class="no-data">There is no published question yet. <a href="{% url 'write' %}">Be the first one to publish!</a></h4>
+        {% endfor %}
+      </section>
+      {% include 'paginator.html' with paginator=questions %}
+    </div>
+    <div class="col-md-2 hidden-md hidden-sm hidden-xs">
+      <h3>Top Categories</h3>
+      <hr>
+      {% for tag, count in popular_tags %}
+        <a href="{% url 'tag' tag %}"><span class="label label-default square-label">{{ count }} {{ tag }}</span></a>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock main %}

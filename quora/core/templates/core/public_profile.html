@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}{{ user.first_name }}{% endblock %}
+{% block main %}
+  <div class="page-header">
+
+    <h1><img class="profile-pic" src="{{ public_user.profile.get_picture }}"> {{ public_user.profile.get_private_screen_name }}</h1>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+          {% for activity in public_user.profile.get_activity %}
+              <h3><a class="question-link" href="{% url 'question' activity.2 %}">{{ activity.1|safe }}</a></h3>
+            <span class="date">{{ activity.0|naturaltime }}</span>
+          {% endfor %}
+      </div>
+    </div>
+{% endblock main %}
