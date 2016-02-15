@@ -1,10 +1,12 @@
-# quora
+# Quora clone
+Quora clone write in Django.
 
-How to get set up to dev.
+![alt tag](http://i.imgur.com/vj4TQFg.jpg)
 
+### Installation
 ```
 # clone repo
-git clone https://<bitbucket_username>@bitbucket.org/edoardoconti/quora.git
+git clone https://github.com/econti/quora-clone.git
 # go into repo
 cd repo_name
 # make a virtual environment
@@ -30,17 +32,21 @@ DATABASE_URL='postgres://<your_pg_username>:p4ssw0rd@localhost:5432/quora'
 
 Now run the database migrations
 ```
-python manage.py syncdb
+python manage.py migrate
 ```
 Create superuser for admin site
 ```
 python manage.py createsuperuser
 ```
-Seed the db with some fake data
-```
-python quora/scripts/seed_db.py
-```
 Now run the server
 ```
 python manage.py runserver
+```
+### Fb Auth & Authenticating users
+There are two ways to create users. One via fb authentication and the other via the app's authentication.
+
+For the app's native authentication vist `localhost:8000/hidden_login`. To set up fb auth simply create a new fb app and modify the following variables in `settings.py`.
+```
+SOCIAL_AUTH_FACEBOOK_KEY = ''
+SOCIAL_AUTH_FACEBOOK_SECRET =''
 ```
