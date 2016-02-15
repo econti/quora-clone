@@ -1,5 +1,5 @@
 # Quora clone
-Quora clone write in Django.
+Quora clone written in Django.
 
 ![alt tag](http://i.imgur.com/vj4TQFg.jpg)
 
