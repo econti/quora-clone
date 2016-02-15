@@ -8,7 +8,7 @@ Quora clone written in Django.
 # clone repo
 git clone https://github.com/econti/quora-clone.git
 # go into repo
-cd repo_name
+cd quora-clone
 # make a virtual environment
 virtualenv env
 # start the env
@@ -34,10 +34,6 @@ Now run the database migrations
 ```
 python manage.py migrate
 ```
-Create superuser for admin site
-```
-python manage.py createsuperuser
-```
 Now run the server
 ```
 python manage.py runserver
@@ -52,3 +48,11 @@ For the app's native authentication vist `localhost:8000/hidden_login`. To set u
 SOCIAL_AUTH_FACEBOOK_KEY = ''
 SOCIAL_AUTH_FACEBOOK_SECRET =''
 ```
+### Admin Site
+
+Create superuser for admin site
+```
+python manage.py createsuperuser
+```
+
+Head to `http://127.0.0.1:8000/admin`
