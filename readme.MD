@@ -42,6 +42,8 @@ Now run the server
 ```
 python manage.py runserver
 ```
+Head to `http://127.0.0.1:8000/`
+
 ### Fb Auth & Authenticating users
 There are two ways to create users. One via fb authentication and the other via the app's authentication.
 
